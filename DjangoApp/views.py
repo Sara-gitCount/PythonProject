@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
@@ -36,7 +37,7 @@ def login2(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect("profile")
+            return redirect("allTasks")
     else:
         form = AuthenticationForm()
     return render(request,"login.html",{'form':form})

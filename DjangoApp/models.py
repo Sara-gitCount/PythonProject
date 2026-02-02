@@ -1,3 +1,6 @@
+from datetime import datetime
+from django.utils import timezone
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.auth.models import User
@@ -13,7 +16,6 @@ STATUS =[
     ,(3, "done")
 ]
 
-# Create your models here.
 class UserStaff(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -22,16 +24,22 @@ class UserStaff(models.Model):
     def __str__(self):
         return self.user.username
 
+def end_date_validation(value):
+    if value <= timezone.now().date():
+        raise ValidationError("Please enter a future date")
+
 
 class Task(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=120)
     description = models.TextField()
-    dateEnd = models.DateField()
+    dateEnd = models.DateField(default=timezone.now)
     status = models.IntegerField(choices=STATUS, default=1)
     user = models.ForeignKey("UserStaff", on_delete=models.CASCADE,null=True,blank=True)
     team = models.ForeignKey("Team", on_delete=models.CASCADE,null=True,blank=True)
-
+    def clean(self):
+        if self.dateEnd is not None and self.dateEnd <= timezone.now().date():
+            raise ValidationError({'dateEnd': "Please enter a future date."})
     def __str__(self):
         return self.title
 

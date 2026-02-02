@@ -13,7 +13,6 @@
             --text-outline: rgba(255, 255, 255, 0.1);
         }
 
-        /* אנימציה אחידה לכל האתר */
         @keyframes masterGlow {
             0% { border-color: var(--neon-blue); stroke: var(--neon-blue); filter: drop-shadow(0 0 10px var(--neon-blue)); color: var(--neon-blue); }
             50% { border-color: var(--neon-pink); stroke: var(--neon-pink); filter: drop-shadow(0 0 20px var(--neon-pink)); color: var(--neon-pink); }
@@ -43,13 +42,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 80px;
+            gap: 130px;
             width: 100%;
             max-width: 1600px;
-            margin-right: 150px; /* מזיז את כל התוכן שמאלה */
+            margin-right: 150px;
         }
 
-        /* --- צד שמאל: מותג --- */
         .brand-zone {
             display: flex;
             flex-direction: column;
@@ -59,7 +57,7 @@
         }
 
         .logo-svg {
-            width: 650px;
+            width: 550px;
             height: 180px;
             overflow: visible;
             display: block;
@@ -101,7 +99,6 @@
             font-weight: bold;
         }
 
-        /* --- צד ימין: כרטיס --- */
         .card-container {
             flex: 0 0 520px;
             position: relative;
@@ -141,7 +138,6 @@
         }
         .logout-link:hover { animation: masterGlow 6s infinite alternate ease-in-out; }
 
-        /* שפיצים/פינות */
         .corner {
             position: absolute; width: 65px; height: 65px; border: 9px solid var(--neon-blue);
             z-index: -1;
@@ -164,12 +160,12 @@
 
         <div class="brand-zone">
             <svg class="logo-svg" viewBox="0 0 700 200">
-                <text x="350" y="150" class="text-skeleton">TASKY.</text>
-                <text x="350" y="150" class="text-animated">TASKY.</text>
+                <text x="350" y="150" class="text-skeleton">WORKIFY.</text>
+                <text x="350" y="150" class="text-animated">WORKIFY.</text>
             </svg>
             <p class="description">
-                התחבר למערכת כדי לנהל את המשימות שלך ולשמור על
-                <span class="highlight-line">פוקוס מקסימלי</span>.
+                 אתר לניהול משימות
+                <span class="highlight-line"> </span>.
             </p>
         </div>
 

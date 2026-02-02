@@ -39,7 +39,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 80px;
+            gap: 130px;
             width: 100%;
             max-width: 1600px;
             margin-right: 150px;
@@ -48,7 +48,7 @@
         .brand-zone { flex: 0 1 auto; text-align: center; }
         .logo-svg { width: 550px; height: 160px; overflow: visible; display: block; }
         .text-animated {
-            font-size: 140px; font-weight: 900; font-family: 'Arial Black', sans-serif;
+            font-size: 160px; font-weight: 900; font-family: 'Arial Black', sans-serif;
             fill: none; stroke-width: 5px; stroke-dasharray: 200; text-anchor: middle;
             animation: lineFlow 6s linear infinite, masterGlow 6s infinite alternate ease-in-out;
         }
@@ -71,24 +71,22 @@
         .field-wrapper { margin-bottom: 20px; text-align: right; }
         label { display: block; color: #a5f3fc; margin-bottom: 8px; font-size: 16px; padding-right: 10px; }
 
-        /* עיצוב משודרג לכל סוגי הקלט כולל Select */
         input, select {
             width: 100%;
-            height: 65px; /* גדול יותר */
+            height: 65px;
             background: rgba(15, 23, 42, 0.8);
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 18px;
             color: white;
-            font-size: 24px; /* כתב גדול */
+            font-size: 24px;
             font-weight: bold;
             text-align: center;
             outline: none;
             transition: 0.3s;
-            appearance: none; /* מבטל את העיצוב המובנה של הדפדפן ברשימות */
+            appearance: none;
             cursor: pointer;
         }
 
-        /* עיצוב ספציפי לרשימה נפתחת כדי להוסיף חץ */
         select {
             background-image: linear-gradient(45deg, transparent 50%, var(--neon-blue) 50%),
                               linear-gradient(135deg, var(--neon-blue) 50%, transparent 50%);
@@ -104,7 +102,6 @@
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
         }
 
-        /* עיצוב האפשרויות בתוך הרשימה */
         select option {
             background: #0f172a;
             color: white;
@@ -140,10 +137,11 @@
     <div class="main-container">
         <div class="brand-zone">
             <svg class="logo-svg" viewBox="0 0 700 200">
-                <text x="350" y="150" class="text-animated">TASKY.</text>
+                <text x="350" y="150" class="text-animated">WORKIFY</text>
             </svg>
-            <p class="description">
-                נהלו את החשבון שלכם ושמרו על <span class="highlight">הגדרות מעודכנות</span>.
+        <p class="description">
+                 אתר לניהול משימות
+                <span class="highlight-line"> </span>.
             </p>
         </div>
 

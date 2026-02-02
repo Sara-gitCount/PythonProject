@@ -93,14 +93,13 @@
             outline: none;
         }
 
-        /* שדה תאריך מעוצב */
         input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(170deg);
             cursor: pointer;
         }
 
         textarea {
-            height: 60px; /* צמצום משמעותי */
+            height: 60px;
             resize: none;
         }
 
@@ -134,7 +133,6 @@
             color: black;
             filter: none;
         }
-/* הטקסט הריק (המסגרת הדקה מאחורה) */
 .text-skeleton {
     font-size: 150px;
     font-weight: 900;
@@ -146,25 +144,21 @@
 }
 
 .text-skeleton {
-    /* הוספת צבע מילוי עדין */
     fill: rgba(255, 255, 255, 0.05) !important;
-    /* וודא שיש קו מתאר ראשוני */
     stroke: rgba(0, 242, 255, 0.3) !important;
 }
 
 .text-animated {
-    /* צבע קו שיראו גם בלי האנימציה */
     stroke: var(--neon-blue);
 }
 
-/* הטקסט שזז וזוהר */
 .text-animated {
     font-size: 150px;
     font-weight: 900;
     font-family: 'Arial Black', sans-serif;
     fill: none;
     stroke-width: 3px;
-    stroke-dasharray: 400; /* קובע את אורך הקו של האנימציה */
+    stroke-dasharray: 400;
     text-anchor: middle;
     animation: lineFlow 6s linear infinite, masterGlow 6s infinite alternate ease-in-out;
 }
@@ -200,8 +194,8 @@
 
         <div class="brand-zone">
             <svg class="logo-svg" viewBox="0 0 700 200">
-                <text x="350" y="130" class="text-skeleton">TASKY.</text>
-                <text x="350" y="130" class="text-animated">TASKY.</text>
+                <text x="350" y="130" class="text-skeleton">WORKIFY</text>
+                <text x="350" y="130" class="text-animated">WORKIFY</text>
             </svg>
         </div>
 
@@ -211,7 +205,28 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
+                {% if form.non_field_errors %}
+                    <div class="form-errors">
+                        <p><strong>שגיאה:</strong></p>
+                        <ul>
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
             <button type="submit" class="btn-submit">שמור</button>
+            {% if field.errors %}
+                <div class="form-errors" style="margin-top: 0.5rem; margin-bottom: 0;">
+                    <ul>
+                        {% for error in field.errors%}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
         </form>
 
         <a href="{% url 'allTasks' %}" class="back-link">⬅ חזרה לרשימה</a>

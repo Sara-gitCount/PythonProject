@@ -41,17 +41,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 80px;
+            gap: 130px;
             width: 100%;
             max-width: 1600px;
-            margin-right: 120px;
+            margin-right: 150px;
         }
 
         /* שמאל: מותג */
         .brand-zone { flex: 0 1 auto; text-align: center; }
-        .logo-svg { width: 650px; height: 180px; overflow: visible; display: block; }
+        .logo-svg { width: 550px; height: 160px; overflow: visible; display: block; }
         .text-animated {
-            font-size: 150px; font-weight: 900; font-family: 'Arial Black', sans-serif;
+            font-size: 160px; font-weight: 900; font-family: 'Arial Black', sans-serif;
             fill: none; stroke-width: 5px; stroke-dasharray: 200; text-anchor: middle;
             animation: lineFlow 6s linear infinite, masterGlow 6s infinite alternate ease-in-out;
         }
@@ -114,12 +114,15 @@
     <div class="main-container">
         <div class="brand-zone">
             <svg class="logo-svg" viewBox="0 0 700 200">
-                <text x="350" y="150" class="text-animated">TASKY.</text>
+                <text x="350" y="150" class="text-animated">WORKIFY</text>
             </svg>
-            <p class="description">התחבר למערכת כדי לנהל את המשימות שלך ולשמור על <span class="highlight">פוקוס מקסימלי</span>.</p>
+            <p class="description">
+                 אתר לניהול משימות
+                <span class="highlight-line"> </span>.
+            </p>
         </div>
 
-        <div class="card-zone">
+         <div class="card-zone">
             <div class="corner tl"></div><div class="corner tr"></div>
             <div class="corner bl"></div><div class="corner br"></div>
             <div class="cyber-card">
@@ -133,20 +136,28 @@
                     </div>
                 {% endif %}
 
-                <form method="post">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div style="margin-bottom: 15px;">
-                            {{ field }}
-                            {% if field.errors %}
-                                <div style="color: var(--error-red); font-size: 14px; margin-top: -10px; margin-bottom: 10px; font-weight: bold; direction: rtl;">
-                                    {{ field.errors.0 }}
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                    <button type="submit" class="btn-signin">SIGN IN</button>
-                </form>
+            <form method="post">
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div style="margin-bottom: 20px; text-align: right;">
+                        <label for="{{ field.id_for_label }}" style="color: var(--neon-blue); display: block; margin-bottom: 8px; font-weight: bold; font-size: 16px; text-align: right;">
+                            {{ field.label }}:
+                        </label>
+
+                        {{ field }}
+
+                        {% if field.errors %}
+                            <div style="color: var(--error-red); font-size: 14px; margin-top: 5px; text-align: right; font-weight: bold;">
+                                {{ field.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn-signin" style="width: 100%; margin-top: 10px;">SIGN IN</button>
+            </form>
+
                 <a href="{% url 'home' %}" class="back-link">→ חזרה לדף הבית</a>
             </div>
         </div>
